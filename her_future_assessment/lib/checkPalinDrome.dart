@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 bool isPalindrome(String str) {
-  String original = str.toLowerCase();
-  String reversed = original.split('').reversed.join('');
-  return original == reversed;
+  String string = str.toLowerCase();
+  string = string.replaceAll(RegExp(r'[^a-z0-9]'), '');
+  String reversed = string.split('').reversed.join('');
+  return string == reversed;
 }

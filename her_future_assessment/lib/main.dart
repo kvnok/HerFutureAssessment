@@ -31,14 +31,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
-
-/*
-historyList should also have the output
- (e.g., ✅ "{word} is a palindrome!" or ❌ "{word} is not a palindrome.")
-madam -> ✅ "madam" is a palindrome!
-hello -> ❌ "hello" is not a palindrome
-racecar -> ✅ "racecar" is a palindrome!
-race car -> ❌ "race car" is not a palindrome!
-
-*/
