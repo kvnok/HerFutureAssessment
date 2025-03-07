@@ -70,7 +70,10 @@ class _InputFieldState extends ConsumerState<InputField> {
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
               _isPalindrome! ? '✅ "$_lastInput" is a palindrome!' : '❌ "$_lastInput" is not a palindrome.',
-              style: TextStyle(color: _isPalindrome! ? Colors.green : Colors.red),
+              style: TextStyle(
+                color: _isPalindrome! ? Colors.green : Colors.red,
+                fontSize: 24, // Increase the font size
+              ),
             ),
           ),
       ],

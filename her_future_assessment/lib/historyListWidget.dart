@@ -7,7 +7,7 @@ class HistorylistWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final history = ref.watch(historylistProvider);
+    final history = ref.watch(historylistProvider).reversed.toList();
 
     return Column(
       children: <Widget>[
