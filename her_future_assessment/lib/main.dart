@@ -13,16 +13,19 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Palindrome Checker'),
+          title: Center(child: Text('Palindrome Checker')),
         ),
-        body: Column(
-          children: [
-            InputField(),
-            const Divider(),
-            Expanded(
-              child: HistorylistWidget(),
-            ),
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InputField(),
+              const Divider(),
+              Expanded(
+                child: HistorylistWidget(),
+              ),
+            ],
+          ),
         ),
       ),
     );

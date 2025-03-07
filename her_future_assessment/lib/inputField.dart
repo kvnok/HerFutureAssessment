@@ -36,23 +36,44 @@ class _InputFieldState extends ConsumerState<InputField> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TextField(
-          controller: _controller,
-          decoration: const InputDecoration(
-            hintText: 'Enter a string',
+        SizedBox(
+          width: 300, // Set the desired width here
+          child: TextField(
+            controller: _controller,
+            decoration: InputDecoration(
+              hintText: 'Enter a string',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              filled: true,
+              fillColor: Colors.grey[200],
+              contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+            ),
           ),
         ),
+        SizedBox(height: 10),
         ElevatedButton(
           onPressed: _checkPalindrome,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            textStyle: TextStyle(fontSize: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
           child: const Text('Check Palindrome'),
         ),
         if (_isPalindrome != null && _lastInput != null)
-          Text(
-            _isPalindrome! ? '✅ "$_lastInput" is a palindrome!' : '❌ "$_lastInput" is not a palindrome.',
-            style: TextStyle(color: _isPalindrome! ? Colors.green : Colors.red),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Text(
+              _isPalindrome! ? '✅ "$_lastInput" is a palindrome!' : '❌ "$_lastInput" is not a palindrome.',
+              style: TextStyle(color: _isPalindrome! ? Colors.green : Colors.red),
+            ),
           ),
       ],
     );
   }
 }
-
