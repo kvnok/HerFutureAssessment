@@ -21,8 +21,10 @@ class HistorylistWidget extends ConsumerWidget {
           child: ListView.builder(
             itemCount: history.length,
             itemBuilder: (BuildContext context, int index) {
+              final entry = history[index];
               return ListTile(
-                title: Text(history[index]),
+                title: Text(entry['input']!),
+                subtitle: Text(entry['result']!),
               );
             },
           ),

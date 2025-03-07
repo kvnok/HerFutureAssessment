@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:her_future_assessment/providers.dart';
 import 'checkPalinDrome.dart';
-import 'historyList.dart';
-
-
 
 class InputField extends ConsumerStatefulWidget {
   const InputField({Key? key}) : super(key: key);
@@ -21,7 +18,8 @@ class _InputFieldState extends ConsumerState<InputField> {
     final String input = _controller.text;
     setState(() {
       _isPalindrome = isPalindrome(input);
-      ref.read(historylistProvider.notifier).addHistory(input);
+      final result = _isPalindrome! ? '✅ "$input" is a palindrome!' : '❌ "$input" is not a palindrome.';
+      ref.read(historylistProvider.notifier).addHistory(input, result);
     });
   }
 
