@@ -13,13 +13,22 @@ class InputField extends ConsumerStatefulWidget {
 class _InputFieldState extends ConsumerState<InputField> {
   final TextEditingController _controller = TextEditingController();
   bool? _isPalindrome;
+  String? _lastInput;
 
   void _checkPalindrome() {
     final String input = _controller.text;
+    if (input.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Input cannot be empty')),
+      );
+      return;
+    }
     setState(() {
       _isPalindrome = isPalindrome(input);
+      _lastInput = input;
       final result = _isPalindrome! ? '✅ "$input" is a palindrome!' : '❌ "$input" is not a palindrome.';
       ref.read(historylistProvider.notifier).addHistory(input, result);
+      _controller.clear(); // Clear the input field
     });
   }
 
@@ -37,12 +46,13 @@ class _InputFieldState extends ConsumerState<InputField> {
           onPressed: _checkPalindrome,
           child: const Text('Check Palindrome'),
         ),
-        if (_isPalindrome != null)
+        if (_isPalindrome != null && _lastInput != null)
           Text(
-            _isPalindrome! ? '✅ "${_controller.text}" is a palindrome!' : '❌ "${_controller.text}" is not a palindrome.',
+            _isPalindrome! ? '✅ "$_lastInput" is a palindrome!' : '❌ "$_lastInput" is not a palindrome.',
             style: TextStyle(color: _isPalindrome! ? Colors.green : Colors.red),
           ),
       ],
     );
   }
 }
+
