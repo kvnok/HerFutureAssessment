@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:her_future_assessment/providers.dart';
 import 'checkPalinDrome.dart';
 import 'historyList.dart';
 
-class InputField extends StatefulWidget {
-  final Historylist historylist;
 
-  const InputField({Key? key, required this.historylist}) : super(key: key);
+
+class InputField extends ConsumerStatefulWidget {
+  const InputField({Key? key}) : super(key: key);
 
   @override
   _InputFieldState createState() => _InputFieldState();
 }
 
-class _InputFieldState extends State<InputField> {
+class _InputFieldState extends ConsumerState<InputField> {
   final TextEditingController _controller = TextEditingController();
   bool? _isPalindrome;
 
@@ -19,7 +21,7 @@ class _InputFieldState extends State<InputField> {
     final String input = _controller.text;
     setState(() {
       _isPalindrome = isPalindrome(input);
-      widget.historylist.addHistory(input);
+      ref.read(historylistProvider.notifier).addHistory(input);
     });
   }
 

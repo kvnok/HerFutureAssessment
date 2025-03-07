@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'historyListWidget.dart';
 import 'inputField.dart';
-import 'historyList.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
-  final Historylist historylist = Historylist();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,9 +17,10 @@ class MainApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            InputField(historylist: historylist),
+            InputField(),
+            const Divider(),
             Expanded(
-              child: HistorylistWidget(historylist: historylist)
+              child: HistorylistWidget(),
             ),
           ],
         ),
