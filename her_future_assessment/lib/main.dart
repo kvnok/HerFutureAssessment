@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
-import 'checkPalinDrome.dart';
 import 'inputField.dart';
 import 'historyList.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final Historylist historylist = Historylist();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InputField(),
-              HistorylistWidget(),
-            ],
-          ),
+        appBar: AppBar(
+          title: Text('Palindrome Checker'),
+        ),
+        body: Column(
+          children: [
+            InputField(historylist: historylist),
+            Expanded(
+              child: HistorylistWidget(historylist: historylist)
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+
 /*
 palindrome checker
 a string is a palindrome if it reads the same forwards and backwards
@@ -46,4 +49,6 @@ There should also be a history list that displays the strings that the user has 
 the history list should be displayed below the message
 
 add historylistwidget to the main app
+on inputfield, add a callback function that adds the input to the history list when the user clicks the button
+add a button to the history list that clears the history list when clicked
 */

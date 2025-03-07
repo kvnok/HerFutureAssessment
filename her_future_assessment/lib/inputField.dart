@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'checkPalinDrome.dart';
+import 'historyList.dart';
 
 class InputField extends StatefulWidget {
-  const InputField({Key? key}) : super(key: key);
+  final Historylist historylist;
+
+  const InputField({Key? key, required this.historylist}) : super(key: key);
 
   @override
   _InputFieldState createState() => _InputFieldState();
@@ -16,6 +19,7 @@ class _InputFieldState extends State<InputField> {
     final String input = _controller.text;
     setState(() {
       _isPalindrome = isPalindrome(input);
+      widget.historylist.addHistory(input);
     });
   }
 

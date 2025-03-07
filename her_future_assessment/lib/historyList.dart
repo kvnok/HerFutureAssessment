@@ -15,15 +15,15 @@ class Historylist {
 }
 
 class HistorylistWidget extends StatefulWidget {
-  const HistorylistWidget({Key? key}) : super(key: key);
+  final Historylist historylist;
+
+  const HistorylistWidget({Key? key, required this.historylist}) : super(key: key);
 
   @override
   _HistorylistWidgetState createState() => _HistorylistWidgetState();
 }
 
 class _HistorylistWidgetState extends State<HistorylistWidget> {
-  final Historylist historylist = Historylist();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,17 +31,17 @@ class _HistorylistWidgetState extends State<HistorylistWidget> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              historylist.clearHistory();
+              widget.historylist.clearHistory();
             });
           },
           child: const Text('Clear History'),
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: historylist.history.length,
+            itemCount: widget.historylist.history.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                title: Text(historylist.history[index]),
+                title: Text(widget.historylist.history[index]),
               );
             },
           ),
