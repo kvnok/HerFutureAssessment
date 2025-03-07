@@ -22,9 +22,23 @@ class HistorylistWidget extends ConsumerWidget {
             itemCount: history.length,
             itemBuilder: (BuildContext context, int index) {
               final entry = history[index];
-              return ListTile(
-                title: Text(entry['input']!),
-                subtitle: Text(entry['result']!),
+              final isPalindrome = entry['result']!.contains('✅');
+              return Center(
+                child: SizedBox(
+                  width: 300, // Set the desired width here
+                  child: Card(
+                    color: isPalindrome ? Colors.green[100] : Colors.red[100],
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      title: Text(entry['input']!),
+                      subtitle: Text(entry['result']!),
+                    ),
+                  ),
+                ),
               );
             },
           ),

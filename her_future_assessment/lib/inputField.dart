@@ -26,7 +26,7 @@ class _InputFieldState extends ConsumerState<InputField> {
     setState(() {
       _isPalindrome = isPalindrome(input);
       _lastInput = input;
-      final result = _isPalindrome! ? '✅ "$input" is a palindrome!' : '❌ "$input" is not a palindrome.';
+      final result = _isPalindrome! ? '✅ is a palindrome!' : '❌ is not a palindrome.';
       ref.read(historylistProvider.notifier).addHistory(input, result);
       _controller.clear(); // Clear the input field
     });
