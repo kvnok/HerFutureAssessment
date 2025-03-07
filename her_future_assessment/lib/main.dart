@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'checkPalinDrome.dart';
 import 'inputField.dart';
+import 'historyList.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +15,13 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: InputField(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InputField(),
+              HistorylistWidget(),
+            ],
+          ),
         ),
       ),
     );
@@ -35,4 +42,8 @@ the message should be displayed in a text widget below the input field
 the message should be displayed in red text if the string is not a palindrome and green text if it is a palindrome
 e.g., ✅ "{word} is a palindrome!" or ❌ "{word} is not a palindrome."
 
+There should also be a history list that displays the strings that the user has checked for palindromes
+the history list should be displayed below the message
+
+add historylistwidget to the main app
 */
