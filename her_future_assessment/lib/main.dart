@@ -18,3 +18,19 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+/*
+palindrome checker
+a string is a palindrome if it reads the same forwards and backwards
+write a function that takes a string and returns true if the string is a palindrome
+and false if it is not
+the function should be case-insensitive and ignore spaces, punctuation, and special characters
+example:
+isPalindrome
+
+there should be an input field for the user to enter a string
+when the user clicks a button, the app should display a message indicating whether the string is a palindrome or not
+the message should be displayed in a text widget below the input field
+the message should be displayed in red text if the string is not a palindrome and green text if it is a palindrome
+e.g., ✅ "{word} is a palindrome!" or ❌ "{word} is not a palindrome."
+
+*/
